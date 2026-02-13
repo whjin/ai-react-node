@@ -1,0 +1,21 @@
+{
+  "name": "ai-react-node",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI助手Node服务端",
+  "main": "index.js",
+  "scripts": {
+    "dev:ssh": "node ssh-server.js",
+    "dev:ai": "node ai-server.js",
+    "dev:ssh:w": "nodemon ssh-server.js",
+    "dev:ai:w": "nodemon ai-server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.22.1",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
