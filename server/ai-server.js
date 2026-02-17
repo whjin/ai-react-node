@@ -13,7 +13,14 @@ const server = http.createServer((req, res) => {
       Connection: 'keep-alive',
     });
 
-    let messageIndex = 0;
+    const lastEventId = req.headers['last-event-id'];
+
+    let messageIndex = lastEventId ? parseInt(lastEventId, 10) : 0;
+
+    let flag = isNaN(messageIndex) || messageIndex < 0 || messageIndex >= aiMessage.length;
+    if (flag) {
+      messageIndex = 0;
+    }
 
     res.write(`: This is comment\n`);
     res.write(`retry: 3000\n`);
