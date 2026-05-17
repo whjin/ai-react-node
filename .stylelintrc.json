@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "rule-empty-line-before": "never",
+    "declaration-empty-line-before": "never",
+    "at-rule-empty-line-before": "never",
+    "block-closing-brace-empty-line-before": "never",
+    "max-empty-lines": 1
+  }
+}
