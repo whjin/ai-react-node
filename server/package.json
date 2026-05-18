@@ -5,10 +5,7 @@
   "description": "AI助手Node服务端",
   "main": "index.js",
   "scripts": {
-    "dev:ssh": "node ssh-server.js",
-    "dev:ai": "node ai-server.js",
-    "dev:ssh:w": "nodemon ssh-server.js",
-    "dev:ai:w": "nodemon ai-server.js"
+    "dev:": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

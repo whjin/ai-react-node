@@ -1,7 +1,7 @@
 const http = require('http');
 const { aiMessage } = require('./mock/ai-message');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
         res.write(
           `data: ${JSON.stringify({
             content: aiMessage[messageIndex],
-          })}\n\n`
+          })}\n\n`,
         );
 
         messageIndex++;
