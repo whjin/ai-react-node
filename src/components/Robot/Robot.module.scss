@@ -26,7 +26,8 @@
     list-style: none;
     padding: 0;
     li {
-      height: 240px;
+      height: fit-content;
+      max-height: 300px;
       border-radius: 8px;
       display: flex;
       flex-direction: column;
