@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { appSetStateContext } from '../../AppState';
 import { type RobotProps } from './index';
 

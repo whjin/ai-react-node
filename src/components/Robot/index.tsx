@@ -1,4 +1,4 @@
-import React, { use, useContext } from 'react';
+import React, { useContext } from 'react';
 import { appContext } from '../../AppState';
 // import { withAddToCart } from './AddToCart';
 import { useAddToCart } from './AddToCart';
