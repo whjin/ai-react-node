@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ShoppingCard.module.scss';
 import { FaShoppingCart } from 'react-icons/fa';
+import { appContext } from '../../AppState';
 
 interface Props {}
 
@@ -26,18 +27,25 @@ class ShoppingCart extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className={styles.shoppingCart}>
-        <button onClick={this.toggleCart}>
-          <FaShoppingCart />
-          <span>购物车 2 （件）</span>
-        </button>
-        <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
-          <ul>
-            <li>robot 1</li>
-            <li>robot 2</li>
-          </ul>
-        </div>
-      </div>
+      <appContext.Consumer>
+        {(value) => {
+          return (
+            <div className={styles.shoppingCart}>
+              <button onClick={this.toggleCart}>
+                <FaShoppingCart />
+                <span>购物车 {value.shoppingCart.items.length}（件）</span>
+              </button>
+              <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
+                <ol>
+                  {value.shoppingCart.items.map((i) => (
+                    <li key={i.id}>{i.name}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          );
+        }}
+      </appContext.Consumer>
     );
   }
 }
