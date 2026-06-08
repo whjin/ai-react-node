@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import './style.scss';
+import styles from './AI.module.scss';
 
-export default function AIApp() {
+export default function AI() {
   const [messages, setMessages] = useState<string[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState('未连接');
@@ -27,13 +27,13 @@ export default function AIApp() {
         setConnectionStatus('已完成');
       });
 
-      eventSource.onmessage = event => {
+      eventSource.onmessage = (event) => {
         const cleanData = event.data.replace(/[\u00A0]/g, ' ').trim();
         const parseData = JSON.parse(cleanData);
-        setMessages(prev => [...prev, parseData.content]);
+        setMessages((prev) => [...prev, parseData.content]);
       };
 
-      eventSource.onerror = error => {
+      eventSource.onerror = (error) => {
         console.error('SSE: 连接错误', error);
         setConnectionStatus('连接断开，等待自动重连');
       };
@@ -63,8 +63,8 @@ export default function AIApp() {
   }, []);
 
   return (
-    <div className='ai-container'>
-      <div className='controls'>
+    <div className={styles.aiContainer}>
+      <div>
         <button onClick={handleStart} disabled={isStreaming}>
           {isStreaming ? '正在接收数据...' : '开始流式输出'}
         </button>
@@ -74,7 +74,7 @@ export default function AIApp() {
         <span style={{ marginLeft: '10px' }}>状态：{connectionStatus}</span>
       </div>
       <div
-        className='message-container'
+        className={styles.messageContainer}
         style={{
           color: '#000',
           textAlign: 'left',
