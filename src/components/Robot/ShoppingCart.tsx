@@ -35,7 +35,14 @@ class ShoppingCart extends React.Component<Props, State> {
                 <FaShoppingCart />
                 <span>购物车 {value.shoppingCart.items.length}（件）</span>
               </button>
-              <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
+              <div
+                style={{
+                  display:
+                    this.state.isOpen && value.shoppingCart.items.length > 0
+                      ? 'block'
+                      : 'none',
+                }}
+              >
                 <ol>
                   {value.shoppingCart.items.map((i) => (
                     <li key={i.id}>{i.name}</li>

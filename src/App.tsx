@@ -43,26 +43,32 @@ const App: React.FC = (props) => {
   return (
     <>
       <div className={robotStyles.robotContainer}>
-        <header>
-          <img src={logo} className={robotStyles.logo} alt="logo" />
-          <h1 className={robotStyles.title}>
-            可跨网络通信，支持本机与远程进程交互，后端服务器与前端服务端交互
-          </h1>
-        </header>
-        <ShoppingCart />
-        {!error ||
-          (error !== '' && (
-            <h2 className={robotStyles.error}>发生错误：{error}</h2>
-          ))}
-        {!loading ? (
-          <ul className={robotStyles.list}>
-            {robotGallary.map((r: RobotProps) => (
-              <Robot id={r.id} name={r.name} email={r.email} key={r.id} />
+        <details>
+          <summary>自定义字体</summary>
+          <header>
+            <img src={logo} className={robotStyles.logo} alt="logo" />
+            <h1 className={robotStyles.title}>
+              可跨网络通信，支持本机与远程进程交互，后端服务器与前端服务端交互
+            </h1>
+          </header>
+        </details>
+        <details>
+          <summary>商城购物</summary>
+          <ShoppingCart />
+          {!error ||
+            (error !== '' && (
+              <h2 className={robotStyles.error}>发生错误：{error}</h2>
             ))}
-          </ul>
-        ) : (
-          <h2>加载中...</h2>
-        )}
+          {!loading ? (
+            <ul className={robotStyles.list}>
+              {robotGallary.map((r: RobotProps) => (
+                <Robot id={r.id} name={r.name} email={r.email} key={r.id} />
+              ))}
+            </ul>
+          ) : (
+            <h2>加载中...</h2>
+          )}
+        </details>
       </div>
     </>
   );

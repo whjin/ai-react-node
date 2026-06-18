@@ -11,7 +11,10 @@ export default function Home() {
     <>
       {isHomeRoot && (
         <>
-          <AI />
+          <details>
+            <summary>AI流式输出</summary>
+            <AI />
+          </details>
           <App />
         </>
       )}
