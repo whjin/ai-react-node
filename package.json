@@ -22,7 +22,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "node": "node server/server.js"
+    "node": "tsx watch server/server.ts"
   },
   "dependencies": {
     "react": "^19.2.0",

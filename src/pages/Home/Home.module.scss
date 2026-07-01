@@ -1,0 +1,17 @@
+.homeContainer {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  details {
+    margin: 1em;
+    cursor: pointer;
+  }
+  .aiAgent {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}

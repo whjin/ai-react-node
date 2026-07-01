@@ -41,3 +41,5 @@ pnpm-lock.yaml
 *.njsproj
 *.sln
 *.sw?
+
+server/.env

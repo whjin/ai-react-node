@@ -44,8 +44,8 @@ class ShoppingCart extends React.Component<Props, State> {
                 }}
               >
                 <ol>
-                  {value.shoppingCart.items.map((i) => (
-                    <li key={i.id}>{i.name}</li>
+                  {value.shoppingCart.items.map((v, i) => (
+                    <li key={i}>{v.name}</li>
                   ))}
                 </ol>
               </div>

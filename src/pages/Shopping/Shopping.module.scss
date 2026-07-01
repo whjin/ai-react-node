@@ -1,20 +1,5 @@
-.robotContainer {
-  width: 100%;
+.shoppingContainer {
   height: 100%;
-  box-sizing: border-box;
-  font-size: 16px;
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .logo {
-      width: 60px;
-    }
-    h1 {
-      margin-left: 0.5em;
-      font-family: 'LeiXiFont';
-    }
-  }
   .error {
     color: #f00;
     font-weight: 600;

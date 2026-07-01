@@ -14,7 +14,7 @@ export default function AI() {
     const connect = () => {
       setConnectionStatus('正在连接');
 
-      const eventSource = new EventSource('http://localhost:3001/stream');
+      const eventSource = new EventSource('http://localhost:3000/stream');
       eventSourceRef.current = eventSource;
 
       eventSource.onopen = () => {

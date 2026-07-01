@@ -1,76 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import logo from './assets/images/react.svg';
-import Robot from './components/Robot';
-import robotStyles from './components/Robot/Robot.module.scss';
-import ShoppingCart from './components/Robot/ShoppingCart';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Layout } from 'antd';
+const { Header, Content, Footer } = Layout;
 
-interface Props {}
+const App: React.FC = () => {
+  const { pathname } = useLocation();
+  const isLoginPage = pathname === '/login';
+  const is404Page = pathname.includes('404');
 
-interface State {
-  robotGallary: any[];
-}
-
-interface RobotProps {
-  id: string | number;
-  name: string;
-  email: string;
-}
-
-const App: React.FC = (props) => {
-  const [robotGallary, setRobotGallary] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          'https://jsonplaceholder.typicode.com/users',
-        );
-        const data = await response.json();
-        setRobotGallary(data);
-      } catch (e) {
-        setError((e as Error).message || '发生未知错误');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const navigate = useNavigate();
 
   return (
-    <>
-      <div className={robotStyles.robotContainer}>
-        <details>
-          <summary>自定义字体</summary>
-          <header>
-            <img src={logo} className={robotStyles.logo} alt="logo" />
-            <h1 className={robotStyles.title}>
-              可跨网络通信，支持本机与远程进程交互，后端服务器与前端服务端交互
-            </h1>
-          </header>
-        </details>
-        <details>
-          <summary>商城购物</summary>
-          <ShoppingCart />
-          {!error ||
-            (error !== '' && (
-              <h2 className={robotStyles.error}>发生错误：{error}</h2>
-            ))}
-          {!loading ? (
-            <ul className={robotStyles.list}>
-              {robotGallary.map((r: RobotProps) => (
-                <Robot id={r.id} name={r.name} email={r.email} key={r.id} />
-              ))}
-            </ul>
-          ) : (
-            <h2>加载中...</h2>
-          )}
-        </details>
-      </div>
-    </>
+    <Layout
+      className="app-layout"
+      style={{ margin: 0, padding: 0, width: '100%' }}
+    >
+      {!isLoginPage && !is404Page && (
+        <Header className="app-header">
+          <h1 onClick={() => navigate('/')} title="返回首页">
+            系统首页
+          </h1>
+        </Header>
+      )}
+      <Content className="app-content">
+        <Outlet />
+      </Content>
+      {!isLoginPage && !is404Page && (
+        <Footer className="app-footer">
+          系统版权信息 ©{new Date().getFullYear()}
+        </Footer>
+      )}
+    </Layout>
   );
 };
 

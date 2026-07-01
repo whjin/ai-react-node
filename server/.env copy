@@ -1,0 +1,36 @@
+# 全局默认使用的模型（可选值：zhipu/tongyi/kimi/doubao/deepseek/hunyuan）
+DEFAULT_MODEL_TYPE=zhipu
+
+# 服务端口（必须和前端Vite代理配置的端口一致）
+SERVER_PORT=3000
+
+# ==================== 国内大模型配置（官方兼容地址）====================
+# 1. 智谱AI（GLM-4系列）
+ZHIPU_API_KEY=你的智谱API密钥（从open.bigmodel.cn获取）
+ZHIPU_BASE_URL=https://open.bigmodel.cn/api/paas/v4/
+ZHIPU_MODEL=glm-4-plus
+
+# 2. 阿里云 通义千问
+TONGYI_API_KEY=你的通义千问API密钥（从dashscope.aliyuncs.com获取）
+TONGYI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+TONGYI_MODEL=qwen-plus
+
+# 3. 月之暗面 Kimi
+KIMI_API_KEY=你的Kimi API密钥（从platform.moonshot.cn获取）
+KIMI_BASE_URL=https://api.moonshot.cn/v1
+KIMI_MODEL=moonshot-v1-8k
+
+# 4. 字节跳动 豆包（火山引擎方舟）
+DOUBAO_API_KEY=你的豆包API密钥（从ark.cn-beijing.volces.com获取）
+DOUBAO_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+DOUBAO_MODEL=你的豆包模型端点ID（如ep-20240604xxxxxx-xxxxx）
+
+# 5. DeepSeek
+DEEPSEEK_API_KEY=你的DeepSeek API密钥（从platform.deepseek.com获取）
+DEEPSEEK_BASE_URL=https://api.deepseek.com/v1
+DEEPSEEK_MODEL=deepseek-chat
+
+# 6. 腾讯混元
+HUNYUAN_API_KEY=你的混元API密钥（从console.cloud.tencent.com/hunyuan获取）
+HUNYUAN_BASE_URL=https://api.hunyuan.cloud.tencent.com/v1
+HUNYUAN_MODEL=hunyuan-turbo
