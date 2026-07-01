@@ -68,15 +68,10 @@ export class ModelFactory {
       throw new Error(`模型【${modelType}】未配置模型名称`);
     }
 
-    // 强制补全/v1路由，兼容国产模型接口
-    const fixedBaseUrl = config.baseURL.endsWith('/v1')
-      ? config.baseURL
-      : `${config.baseURL}/v1`;
-
     const instance = {
       client: new OpenAI({
         apiKey: config.apiKey,
-        baseURL: fixedBaseUrl,
+        baseURL: config.baseURL,
       }),
       modelName: config.model,
     };

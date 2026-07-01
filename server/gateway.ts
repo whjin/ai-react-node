@@ -144,8 +144,8 @@ wss.on('connection', (ws) => {
     }
   });
 
-  ws.on('close', () => {
-    console.log(`连接关闭，会话ID：${sessionId}`);
+  ws.on('close', (e) => {
+    console.log(`连接关闭，会话ID：${sessionId}`, e);
   });
   ws.on('error', (error) => {
     console.error(`连接异常，会话ID：${sessionId}，错误：`, error);

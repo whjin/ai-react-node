@@ -23,7 +23,7 @@ export interface Skill {
 export const registeredSkills: Skill[] = [];
 
 // 文件根目录统一配置
-const DOC_ROOT = path.join(process.cwd(), '../docs');
+const DOC_ROOT = path.join(process.cwd(), './server/docs');
 // 工具输出最大长度，防止上下文溢出
 const MAX_TOOL_OUTPUT = 3000;
 
@@ -50,7 +50,7 @@ const systemInfoSkill: Skill = {
         ? res.slice(0, MAX_TOOL_OUTPUT) + '\n...内容过长已截断'
         : res;
     } catch (e) {
-      return `获取系统信息失败：${e as Error}.message`;
+      return `获取系统信息失败：${(e as Error).message}`;
     }
   },
 };
@@ -83,7 +83,7 @@ const readFileSkill: Skill = {
       }
       return output;
     } catch (e) {
-      return `获取文件失败：${e as Error}.message`;
+      return `获取文件失败：${(e as Error).message}`;
     }
   },
 };

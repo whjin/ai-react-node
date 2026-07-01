@@ -40,6 +40,10 @@
       "@components/*": [
         "./src/components/*"
       ]
-    }
+    },
+    "include": [
+      "src",
+      "src/css-modules.d.ts"
+    ]
   }
 }

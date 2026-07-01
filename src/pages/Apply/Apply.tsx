@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './Apply.module.scss';
-import { Button, message } from 'antd';
+import { Button } from 'antd';
 
 interface Message {
   role: 'user' | 'assistant';
