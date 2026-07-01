@@ -21,6 +21,13 @@ export default function Home() {
       <Card title="AI流式输出" className={styles.card}>
         <Space>
           <Button type="primary" onClick={() => gotoPage('/ai')}>
+            AI流式输出
+          </Button>
+        </Space>
+      </Card>
+      <Card title="AI智能助手" className={styles.card}>
+        <Space>
+          <Button type="primary" onClick={() => gotoPage('/apply')}>
             AI智能助手
           </Button>
         </Space>

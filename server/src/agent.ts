@@ -1,9 +1,7 @@
 import OpenAI from 'openai';
-import dotenv from 'dotenv';
 import { loadSession, saveSession, Message } from './memory';
 import { registeredSkills } from './skills';
 import { ModelFactory, ModelType } from './modelFactory';
-dotenv.config();
 
 // 定义与 OpenAI SDK 兼容的消息类型
 type ChatCompletionMessageParam = OpenAI.ChatCompletionMessageParam;
@@ -87,16 +85,6 @@ export async function runAgent(
   toolCalls: string[];
   usedModel: ModelType;
 }> {
-  // 启动配置自检
-  const configErrors = ModelFactory.validateAllConfigs();
-  if (configErrors.length > 0) {
-    return {
-      finalResponse: `模型配置异常：${configErrors.join('；')}`,
-      toolCalls: [],
-      usedModel: modelType || ModelFactory.getDefaultModelType(),
-    };
-  }
-
   // 1. 选择模型，创建客户端
   const selectedModel = modelType || ModelFactory.getDefaultModelType();
   const { client: llm, modelName } = ModelFactory.createClient(selectedModel);

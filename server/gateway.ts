@@ -1,12 +1,10 @@
 import express from 'express';
 import http from 'http';
 import path from 'path';
-import dotenv from 'dotenv';
 import { WebSocketServer } from 'ws';
 import { fileURLToPath } from 'url';
 import { runAgent } from './src/agent';
 import { ModelFactory, ModelType } from './src/modelFactory';
-dotenv.config();
 import { aiMessage } from './mock/ai-message';
 
 // 处理路径（兼容ESModule）

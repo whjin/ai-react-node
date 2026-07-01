@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { formatTime } from '../utils/util';
 
 // 获取当前目录路径
 const __filename = fileURLToPath(import.meta.url);
@@ -20,8 +21,8 @@ export interface Message {
 // 会话类型
 export interface Session {
   sessionId: string;
-  createTime: number;
-  updateTime: number;
+  createTime: number | string;
+  updateTime: number | string;
   messages: Message[];
 }
 
@@ -47,7 +48,7 @@ export async function loadSession(sessionId: string): Promise<Session> {
     }
     return session;
   } catch (e) {
-    const now = Date.now();
+    const now = formatTime(Date.now());
     const newSession: Session = {
       sessionId,
       createTime: now,
@@ -62,7 +63,7 @@ export async function loadSession(sessionId: string): Promise<Session> {
 // 保存会话到本地文件
 export async function saveSession(session: Session): Promise<void> {
   await initSessionDir();
-  session.updateTime = Date.now();
+  session.updateTime = formatTime(Date.now());
   const sessionPath = path.join(SESSION_DIR, `${session.sessionId}.json`);
   await fs.writeFile(sessionPath, JSON.stringify(session, null, 2));
 }

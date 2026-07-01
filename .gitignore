@@ -42,4 +42,6 @@ pnpm-lock.yaml
 *.sln
 *.sw?
 
-server/.env
+server/.env 
+pnpm-workspace.yaml
+server/sessions/

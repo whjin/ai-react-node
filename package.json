@@ -6,7 +6,7 @@
     "name": "whjin",
     "email": "wuhuajin09@163.com"
   },
-  "description": "AI助手React客户端",
+  "description": "AI React Node 项目",
   "repository": {
     "type": "git",
     "url": "https://github.com/whjin/ai-node-server.git"
@@ -22,21 +22,30 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "node": "tsx watch server/server.ts"
+    "node": "tsx watch --env-file server/.env server/gateway.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.22.2",
+    "https": "^1.0.0",
+    "openai": "^6.45.0",
+    "ws": "^8.21.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^6.2.5",
     "@eslint/js": "^9.39.1",
     "@reduxjs/toolkit": "^2.12.0",
     "@types/css-modules": "^1.0.5",
-    "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.13.1",
+    "@types/ws": "^8.18.1",
+    "nodemon": "^3.1.11",
+    "tsx": "^4.22.4",
     "antd": "^6.4.3",
     "axios": "^1.17.0",
     "eslint": "^9.39.1",

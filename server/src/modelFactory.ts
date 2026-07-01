@@ -1,6 +1,4 @@
 import OpenAI from 'openai';
-import dotenv from 'dotenv';
-dotenv.config();
 
 // 模型类型枚举
 export type ModelType =
@@ -20,38 +18,38 @@ interface ModelConfig {
 // 模型映射
 const modelConfigs: Record<ModelType, ModelConfig> = {
   zhipu: {
-    apiKey: process.env.ZHIPU_API_KEY || '',
-    baseURL: process.env.ZHIPU_BASE_URL || '',
-    model: process.env.ZHIPU_MODEL || '',
+    apiKey: process.env.VITE_ZHIPU_API_KEY || '',
+    baseURL: process.env.VITE_ZHIPU_BASE_URL || '',
+    model: process.env.VITE_ZHIPU_MODEL || '',
   },
   tongyi: {
-    apiKey: process.env.TONGYI_API_KEY || '',
-    baseURL: process.env.TONGYI_BASE_URL || '',
-    model: process.env.TONGYI_MODEL || '',
+    apiKey: process.env.VITE_TONGYI_API_KEY || '',
+    baseURL: process.env.VITE_TONGYI_BASE_URL || '',
+    model: process.env.VITE_TONGYI_MODEL || '',
   },
   kimi: {
-    apiKey: process.env.KIMI_API_KEY || '',
-    baseURL: process.env.KIMI_BASE_URL || '',
-    model: process.env.KIMI_MODEL || '',
+    apiKey: process.env.VITE_KIMI_API_KEY || '',
+    baseURL: process.env.VITE_KIMI_BASE_URL || '',
+    model: process.env.VITE_KIMI_MODEL || '',
   },
   doubao: {
-    apiKey: process.env.DOUBAO_API_KEY || '',
-    baseURL: process.env.DOUBAO_BASE_URL || '',
-    model: process.env.DOUBAO_MODEL || '',
+    apiKey: process.env.VITE_DOUBAO_API_KEY || '',
+    baseURL: process.env.VITE_DOUBAO_BASE_URL || '',
+    model: process.env.VITE_DOUBAO_MODEL || '',
   },
   deepseek: {
-    apiKey: process.env.DEEPSEEK_API_KEY || '',
-    baseURL: process.env.DEEPSEEK_BASE_URL || '',
-    model: process.env.DEEPSEEK_MODEL || '',
+    apiKey: process.env.VITE_DEEPSEEK_API_KEY || '',
+    baseURL: process.env.VITE_DEEPSEEK_BASE_URL || '',
+    model: process.env.VITE_DEEPSEEK_MODEL || '',
   },
   hunyuan: {
-    apiKey: process.env.HUNYUAN_API_KEY || '',
-    baseURL: process.env.HUNYUAN_BASE_URL || '',
-    model: process.env.HUNYUAN_MODEL || '',
+    apiKey: process.env.VITE_HUNYUAN_API_KEY || '',
+    baseURL: process.env.VITE_HUNYUAN_BASE_URL || '',
+    model: process.env.VITE_HUNYUAN_MODEL || '',
   },
 };
 
-// 客户端缓存，服用实例
+// 客户端缓存，复用实例
 const clientCache = new Map<ModelType, { client: OpenAI; modelName: string }>();
 
 // 模型工厂
@@ -90,23 +88,11 @@ export class ModelFactory {
   static getDefaultModelType(): ModelType {
     const defaultType = process.env.DEFAULT_MODEL_TYPE as ModelType;
     if (Object.keys(modelConfigs).includes(defaultType)) return defaultType;
-    return 'tongyi';
+    return 'zhipu';
   }
 
   // 获取所有模型列表
   static getSupportedModels(): ModelType[] {
     return Object.keys(modelConfigs) as ModelType[];
-  }
-
-  // 预校验所有模型配置，启动自检
-  static validateAllConfigs(): string[] {
-    const errors: string[] = [];
-    (Object.keys(modelConfigs) as ModelType[]).forEach((key) => {
-      const cfg = modelConfigs[key];
-      if (!cfg.apiKey) errors.push(`【${key}】未配置API_KEY`);
-      if (!cfg.baseURL) errors.push(`【${key}】未配置BASE_URL`);
-      if (!cfg.model) errors.push(`【${key}】未配置MODEL名称`);
-    });
-    return errors;
   }
 }

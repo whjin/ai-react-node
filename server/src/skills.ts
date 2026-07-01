@@ -1,4 +1,4 @@
-import os, { arch, hostname, platform, totalmem } from 'os';
+import os from 'os';
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
