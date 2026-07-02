@@ -7,7 +7,8 @@ export type ModelType =
   | 'kimi'
   | 'doubao'
   | 'deepseek'
-  | 'hunyuan';
+  | 'hunyuan'
+  | 'siliconflow';
 
 interface ModelConfig {
   apiKey: string;
@@ -47,6 +48,11 @@ const modelConfigs: Record<ModelType, ModelConfig> = {
     baseURL: process.env.VITE_HUNYUAN_BASE_URL || '',
     model: process.env.VITE_HUNYUAN_MODEL || '',
   },
+  siliconflow: {
+    apiKey: process.env.VITE_SILICONFLOW_API_KEY || '',
+    baseURL: process.env.VITE_SILICONFLOW_BASE_URL || '',
+    model: process.env.VITE_SILICONFLOW_MODEL || '',
+  },
 };
 
 // 客户端缓存，复用实例
@@ -62,6 +68,7 @@ export class ModelFactory {
     if (clientCache.has(modelType)) return clientCache.get(modelType)!;
 
     const config = modelConfigs[modelType];
+    console.log('当前模型：', config);
     if (!config.apiKey)
       throw new Error(`模型【${modelType}】缺少API密钥，请配置环境变量`);
     if (!config.model) {

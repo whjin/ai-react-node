@@ -89,3 +89,23 @@ rm -f "$TMP_COMMIT"
 
 exit 0
 ```
+
+## 环境变量配置
+
+`server/.env.md` 文件名改为 `server/.env`
+
+## 调试
+
+**当前已经调通的模型**
+
+1. 智谱 `zhipu`
+   - `model：glm-4-flash`
+   - `base_url：https://open.bigmodel.cn/api/paas/v4`
+2. 通义千问 `tongyi`
+   - `model：qwen3.7-plus`
+   - `base_url：https://ws-8rtd9w1qqbcprba0.cn-beijing.maas.aliyuncs.com/compatible-mode/v1`
+3. 月之暗面 `kimi`
+   - `model：moonshot-v1-128k`
+   - `base_url：https://api.moonshot.cn/v1`
+
+**迭代功能：接入网络搜索、 `Agent` 智能体和集成外部 `Skill` 功能**

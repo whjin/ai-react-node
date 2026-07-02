@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './Apply.module.scss';
 import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -35,10 +36,14 @@ const Apply: React.FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const wsRef = useRef<WebSocket | null>(null);
 
+  const navigate = useNavigate();
+
   const scrollToBottom = useCallback(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+    const container = chatContainerRef.current;
+    if (container) {
+      requestAnimationFrame(() => {
+        container.scrollTop = container.scrollHeight;
+      });
     }
   }, []);
 
@@ -148,7 +153,8 @@ const Apply: React.FC = () => {
         content: content,
       },
     ]);
-    scrollToBottom();
+
+    setTimeout(scrollToBottom, 0);
 
     ws.send(
       JSON.stringify({
@@ -175,6 +181,14 @@ const Apply: React.FC = () => {
   };
 
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
+
+  useEffect(() => {
     getSupportedModels();
     const cleanup = initWebSocket();
 
@@ -192,9 +206,11 @@ const Apply: React.FC = () => {
   }, [userInput, autoResize]);
 
   return (
-    <div className={styles.body}>
+    <div className={styles.applyContainer}>
       <div className={styles.header}>
-        <h1>AI智能助手</h1>
+        <h1 onClick={() => navigate('/')} title="返回首页">
+          AI智能助手
+        </h1>
         <div className={styles.modelSelector}>
           <span>模型选择：</span>
           <select

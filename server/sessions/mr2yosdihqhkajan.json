@@ -1,0 +1,27 @@
+{
+  "sessionId": "mr2yosdihqhkajan",
+  "createTime": "2026-07-02 11:46:09",
+  "updateTime": "2026-07-02 11:46:20",
+  "messages": [
+    {
+      "role": "user",
+      "content": "我国建军节的历史"
+    },
+    {
+      "role": "assistant",
+      "content": "这个问题涉及到历史知识，我需要调用搜索引擎来获取相关信息。{\"index\":0,\"finish_reason\":\"tool_calls\",\"delta\":{\"role\":\"assistant\",\"content\":null,\"reasoning_content\":null,\"reasoning\":null,\"audio\":null,\"tool_calls\":[{\"id\":\"call_20260702114610e360c185d25e42dc_0\",\"index\":0,\"type\":\"function\",\"function\":{\"name\":\"get_system_info\",\"arguments\":\"{}\",\"outputs\":null},\"code_interpreter\":null,\"retrieval\":null,\"mcp\":null,\"drawing_tool\":null,\"web_browser\":null,\"search_intent\":null,\"search_result\":null}],\"tool_call_id\":null,\"attachments\":null,\"metadata\":null}}",
+      "tool_call_id": "call_-7480242929659799338",
+      "name": "get_system_info"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_-7480242929659799338",
+      "name": "get_system_info",
+      "content": "{\n  \"platform\": \"win32\",\n  \"arch\": \"arm64\",\n  \"nodeVersion\": \"v24.16.0\",\n  \"cpuCount\": 4,\n  \"totalMemory\": \"5.99 GB\",\n  \"freeMemory\": \"0.68 GB\",\n  \"hostname\": \"whjin\",\n  \"uptime\": \"21.29 小时\"\n}"
+    },
+    {
+      "role": "assistant",
+      "content": "建军节，即中国人民解放军建军纪念日，是中国人民解放军建军的日子。1927年8月1日，中国共产党领导下的南昌起义爆发，标志着中国人民解放军的诞生。1949年，中华人民共和国成立后，将8月1日定为建军节，以纪念中国人民解放军的成立和英勇斗争精神。这一节日不仅是对中国人民解放军的表彰，也是对全体中国人民的鼓舞和激励。"
+    }
+  ]
+}

@@ -44,4 +44,3 @@ pnpm-lock.yaml
 
 server/.env 
 pnpm-workspace.yaml
-server/sessions/

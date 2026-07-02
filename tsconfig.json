@@ -14,7 +14,7 @@
     "lib": [
       "ES2020",
       "DOM",
-      "DOM.Iterable",
+      "DOM.Iterable"
     ],
     "allowJs": true,
     "checkJs": true,
@@ -40,10 +40,11 @@
       "@components/*": [
         "./src/components/*"
       ]
-    },
-    "include": [
-      "src",
-      "src/css-modules.d.ts"
-    ]
-  }
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ]
 }
