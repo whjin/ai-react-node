@@ -1,0 +1,23 @@
+{
+  "sessionId": "mr2z7dk72e7823ku",
+  "createTime": "2026-07-02 11:59:58",
+  "updateTime": "2026-07-02 12:00:09",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好"
+    },
+    {
+      "role": "assistant",
+      "content": "你好，请问有什么可以帮助你的吗？"
+    },
+    {
+      "role": "user",
+      "content": "中国国土面积"
+    },
+    {
+      "role": "assistant",
+      "content": "中国陆地面积约960万平方千米，东部和南部大陆海岸线1.8万多千米，海域总面积约473万平方千米。"
+    }
+  ]
+}
